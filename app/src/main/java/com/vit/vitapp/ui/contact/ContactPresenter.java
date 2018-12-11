@@ -1,24 +1,19 @@
 package com.vit.vitapp.ui.contact;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.vit.vitapp.data.model.Contact;
-import com.vit.vitapp.data.remote.ApiService;
-
-import java.util.List;
+import com.vit.vitapp.data.ContactRepository;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class ContactPresenter implements ContactContract.Presenter {
 
     @Inject
-    ApiService apiService;
+    ContactRepository contactRepository;
 
     @Inject
     ContactContract.View mContactsView;
@@ -38,21 +33,11 @@ public class ContactPresenter implements ContactContract.Presenter {
 
     @Override
     public void loadContacts() {
-        mCompositeDisposable.add(apiService.getContacts(null)
+        mCompositeDisposable.add(contactRepository.getContacts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<Contact>>() {
-
-                    @Override
-                    public void onSuccess(List<Contact> contacts) {
-                        mContactsView.showContacts(contacts);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        mContactsView.showError(e);
-                    }
-                })
+                .subscribe(contacts -> mContactsView.showContacts(contacts),
+                        throwable -> mContactsView.showError(throwable))
         );
     }
 
