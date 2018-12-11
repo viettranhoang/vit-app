@@ -1,4 +1,4 @@
-package com.vit.vitapp.ui.utils;
+package com.vit.vitapp.utils;
 
 import java.io.IOException;
 import java.net.SocketException;

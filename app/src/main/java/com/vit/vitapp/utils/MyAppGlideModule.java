@@ -1,4 +1,4 @@
-package com.vit.vitapp.ui.utils;
+package com.vit.vitapp.utils;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
