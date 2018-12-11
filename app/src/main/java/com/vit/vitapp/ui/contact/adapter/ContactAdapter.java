@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vit.vitapp.R;
 import com.vit.vitapp.data.model.Contact;
 import com.vit.vitapp.ui.base.BaseViewHolder;
+import com.vit.vitapp.ui.contact.listener.OnClickContactItemListener;
 import com.vit.vitapp.utils.GlideApp;
 
 import java.util.ArrayList;
@@ -19,10 +21,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
     private List<Contact> mContacts = new ArrayList<>();
+
+    @Inject
+    OnClickContactItemListener listener;
 
     @Inject
     public ContactAdapter() {
@@ -77,6 +83,11 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
                     .load(contact.getProfileImage())
                     .circleCrop()
                     .into(mImageThumbnail);
+        }
+
+        @OnClick(R.id.layout_root)
+        void onClickItem() {
+            listener.onClickContact(mContacts.get(getAdapterPosition()));
         }
     }
 }

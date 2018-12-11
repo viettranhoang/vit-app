@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.vit.vitapp.R;
 import com.vit.vitapp.data.model.Contact;
 import com.vit.vitapp.ui.base.BaseActivity;
 import com.vit.vitapp.ui.contact.adapter.ContactAdapter;
+import com.vit.vitapp.ui.contact.listener.OnClickContactItemListener;
 
 import java.util.List;
 
@@ -19,7 +21,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnTextChanged;
 
-public class ContactActivity extends BaseActivity implements ContactContract.View{
+public class ContactActivity extends BaseActivity implements ContactContract.View,
+        OnClickContactItemListener {
 
 
     @BindView(R.id.list_contact)
@@ -88,5 +91,10 @@ public class ContactActivity extends BaseActivity implements ContactContract.Vie
         mRcvContact.setHasFixedSize(true);
         mRcvContact.setItemAnimator(new DefaultItemAnimator());
         mRcvContact.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClickContact(Contact contact) {
+        Toast.makeText(this, contact.toString(), Toast.LENGTH_SHORT).show();
     }
 }
