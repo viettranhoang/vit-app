@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnTextChanged;
 
 public class ContactActivity extends BaseActivity implements ContactContract.View{
 
@@ -58,6 +59,11 @@ public class ContactActivity extends BaseActivity implements ContactContract.Vie
     protected void onStop() {
         super.onStop();
         presenter.unsubscribe();
+    }
+
+    @OnTextChanged(R.id.input_search)
+    void onClickSearch() {
+        presenter.searchContacts(mInputSearch.getText().toString());
     }
 
     @Override

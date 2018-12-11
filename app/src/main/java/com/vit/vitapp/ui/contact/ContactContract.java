@@ -17,7 +17,7 @@ public interface ContactContract {
 
     }
 
-    interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter {
 
         /**
          * search intance using rxjava on to remote or ROOM

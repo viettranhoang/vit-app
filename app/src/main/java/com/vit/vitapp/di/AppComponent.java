@@ -13,7 +13,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class,
         AppModule.class,
         NetworkModule.class,
-        RepositoryModule.class})
+        RepositoryModule.class,
+        DatabaseModule.class})
 public interface AppComponent extends AndroidInjector<VitApplication> {
     @Component.Builder
     abstract class Builder extends AndroidInjector.Builder<VitApplication> {
