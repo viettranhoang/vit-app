@@ -1,0 +1,50 @@
+ext {
+    androidBuildToolsVersion = "27.0.3"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    androidSupportVersion = '28.0.0'
+    roomVersion = '1.1.1'
+    archLifecycleVersion = '1.1.1'
+    butterKnifeVersion = '8.8.1'
+    rxJavaVersion = '2.2.3'
+    rxAndroidVersion = '2.1.0'
+    rxBindingVersion = '2.0.0'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    glideVersion = '4.8.0'
+    retrofitVersion = '2.5.0'
+    okHttp3Version = '3.11.0'
+    spinKitVersion = '1.2.0'
+    daggerVersion = '2.19'
+
+    domainDependencies = [
+            rx2Java        : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}"
+    ]
+
+    dataDependencies = [
+            rx2Java        : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}"
+    ]
+
+    cacheDependencies = [
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            room           : "android.arch.persistence.room:runtime:${roomVersion}",
+            roomProcessor  : "android.arch.persistence.room:compiler:${roomVersion}",
+            roomRx2        : "android.arch.persistence.room:rxjava2:${roomVersion}"
+    ]
+
+    remoteDependencies = [
+            javaxAnnotation      : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject          : "javax.inject:javax.inject:${javaxInjectVersion}",
+            retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitRx2          : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            okhttp3Logging       : "com.squareup.okhttp3:logging-interceptor:${okHttp3Version}"
+    ]
+}
