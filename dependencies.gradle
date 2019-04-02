@@ -6,7 +6,7 @@ ext {
 
     androidSupportVersion = '28.0.0'
     roomVersion = '1.1.1'
-    archLifecycleVersion = '1.1.1'
+    lifecycleVersion = '1.1.1'
     butterKnifeVersion = '8.8.1'
     rxJavaVersion = '2.2.3'
     rxAndroidVersion = '2.1.0'
@@ -46,5 +46,14 @@ ext {
             retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             retrofitRx2          : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
             okhttp3Logging       : "com.squareup.okhttp3:logging-interceptor:${okHttp3Version}"
+    ]
+
+    presentationDependencies = [
+            rx2Java            : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            javaxAnnotation    : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject        : "javax.inject:javax.inject:${javaxInjectVersion}",
+            lifecycleExtensions: "android.arch.lifecycle:extensions:${lifecycleVersion}",
+            lifecycleRuntime   : "android.arch.lifecycle:runtime:${lifecycleVersion}",
+            lifecycleProcessor : "android.arch.lifecycle:compiler:${lifecycleVersion}"
     ]
 }

@@ -14,14 +14,14 @@ import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 
 @Singleton
-public class ContactListUseCase extends FlowableUseCase<List<Contact>> {
+public class GetContactListUseCase extends FlowableUseCase<List<Contact>> {
 
     @Inject
     ContactRepository contactRepository;
 
     @Inject
-    public ContactListUseCase(@Named("SchedulerType.IO") Scheduler schedulerIO,
-                              @Named("SchedulerType.UI") Scheduler schedulerUI) {
+    public GetContactListUseCase(@Named("SchedulerType.IO") Scheduler schedulerIO,
+                                 @Named("SchedulerType.UI") Scheduler schedulerUI) {
         super(schedulerIO, schedulerUI);
     }
 

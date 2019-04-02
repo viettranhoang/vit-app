@@ -64,8 +64,8 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
 
     // Lifecycle components
-    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycleVersion"
 
     // Dagger2
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
