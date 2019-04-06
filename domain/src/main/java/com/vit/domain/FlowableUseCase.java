@@ -1,14 +1,11 @@
-package com.vit.domain.usecase;
+package com.vit.domain;
 
 import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subscribers.DisposableSubscriber;
 
-/**
- * Note:
- * Created by kienht on 5/2/18.
- */
+
 public abstract class FlowableUseCase<T> {
 
     private Scheduler threadExecutor;

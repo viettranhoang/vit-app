@@ -2,7 +2,7 @@ package com.vit.data.features.contact.mapper;
 
 import com.vit.data.Mapper;
 import com.vit.data.features.contact.model.ContactEntity;
-import com.vit.domain.model.Contact;
+import com.vit.domain.usecase.contact.model.Contact;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.vit.presentation.features.contact.model.ContactViewData;
 import com.vit.vitapp.R;
-import com.vit.vitapp.data.model.Contact;
 import com.vit.vitapp.ui.base.BaseViewHolder;
 import com.vit.vitapp.ui.contact.listener.OnClickContactItemListener;
 import com.vit.vitapp.utils.GlideApp;
@@ -25,7 +24,7 @@ import butterknife.OnClick;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
-    private List<Contact> mContacts = new ArrayList<>();
+    private List<ContactViewData> mContacts = new ArrayList<>();
 
     @Inject
     OnClickContactItemListener listener;
@@ -34,11 +33,11 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public ContactAdapter() {
     }
 
-    public List<Contact> getList() {
+    public List<ContactViewData> getList() {
         return mContacts;
     }
 
-    public void setList(List<Contact> mContacts) {
+    public void setList(List<ContactViewData> mContacts) {
         this.mContacts = mContacts;
         notifyDataSetChanged();
     }
@@ -60,7 +59,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         return mContacts.size();
     }
 
-    class ContactViewHolder extends BaseViewHolder<Contact> {
+    class ContactViewHolder extends BaseViewHolder<ContactViewData> {
 
         @BindView(R.id.text_name)
         TextView mTextName;
@@ -76,11 +75,11 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
 
         @Override
-        public void bindData(Contact contact) {
+        public void bindData(ContactViewData contact) {
             mTextName.setText(contact.getName());
             mTextPhone.setText(contact.getPhone());
             GlideApp.with(itemView.getContext())
-                    .load(contact.getProfileImage())
+                    .load(contact.getAvatar())
                     .circleCrop()
                     .into(mImageThumbnail);
         }

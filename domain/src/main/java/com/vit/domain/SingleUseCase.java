@@ -1,13 +1,10 @@
-package com.vit.domain.usecase;
+package com.vit.domain;
 
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 
-/**
- * Note:
- * Created by kienht on 5/18/18.
- */
+
 public abstract class SingleUseCase<T, Params> {
 
     private Scheduler threadExecutor;

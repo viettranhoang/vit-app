@@ -1,4 +1,4 @@
-package com.vit.domain.model;
+package com.vit.domain.usecase.contact.model;
 
 public class Contact {
     private String name;

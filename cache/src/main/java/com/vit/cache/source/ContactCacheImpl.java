@@ -15,6 +15,7 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
+import io.reactivex.Single;
 
 public class ContactCacheImpl implements ContactCache {
 
@@ -31,6 +32,10 @@ public class ContactCacheImpl implements ContactCache {
 
     @Inject
     PrefUtils prefUtils;
+
+    @Inject
+    public ContactCacheImpl() {
+    }
 
     @Inject
     @Named("SchedulerType.COMPUTATION")
@@ -61,8 +66,10 @@ public class ContactCacheImpl implements ContactCache {
     }
 
     @Override
-    public boolean isCache() {
-        return database.contactDao().getContacts().isEmpty().blockingGet();
+    public Single<Boolean> isCache() {
+        return Single.defer(() -> Single.just(!database.contactDao().getContacts().isEmpty().blockingGet())
+        .subscribeOn(schedulerComputation));
+
     }
 
     @Override

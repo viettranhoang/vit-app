@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import com.vit.cache.DBConstants;
-import com.vit.domain.model.Contact;
+import com.vit.domain.usecase.contact.model.Contact;
 
 @Entity(tableName = DBConstants.Contact.TABLE_NAME)
 public class ContactCached {

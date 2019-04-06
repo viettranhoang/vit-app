@@ -1,5 +1,8 @@
 package com.vit.vitapp.ui.contact;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +11,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.vit.data.features.contact.source.ContactRemote;
+import com.vit.presentation.features.contact.GetContactListViewModel;
+import com.vit.presentation.features.contact.model.ContactViewData;
 import com.vit.vitapp.R;
-import com.vit.vitapp.data.model.Contact;
 import com.vit.vitapp.ui.base.BaseActivity;
 import com.vit.vitapp.ui.contact.adapter.ContactAdapter;
 import com.vit.vitapp.ui.contact.listener.OnClickContactItemListener;
@@ -21,9 +26,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnTextChanged;
 
-public class ContactActivity extends BaseActivity implements ContactContract.View,
-        OnClickContactItemListener {
-
+public class ContactActivity extends BaseActivity implements OnClickContactItemListener {
 
     @BindView(R.id.list_contact)
     RecyclerView mRcvContact;
@@ -34,12 +37,10 @@ public class ContactActivity extends BaseActivity implements ContactContract.Vie
     @BindView(R.id.input_search)
     EditText mInputSearch;
 
-
     @Inject
     ContactAdapter adapter;
 
-    @Inject
-    ContactContract.Presenter presenter;
+    private GetContactListViewModel getContactListViewModel;
 
     @Override
     protected int getLayoutId() {
@@ -50,33 +51,31 @@ public class ContactActivity extends BaseActivity implements ContactContract.Vie
     protected void initView() {
         initToolbar();
         initRcv();
+
+
+        getContactListViewModel = ViewModelProviders.of(this, mViewModelFactory).get(GetContactListViewModel.class);
+
+        getContactList();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.subscribe();
+    private void getContactList() {
+        getContactListViewModel.getContactList().observe(this, resource -> {
+            switch (resource.getStatus()) {
+                case LOADING:
+                    break;
+                case SUCCESS:
+                    adapter.setList((List<ContactViewData>) resource.getData());
+                    break;
+                case ERROR:
+
+                    break;
+            }
+        });
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        presenter.unsubscribe();
-    }
 
     @OnTextChanged(R.id.input_search)
     void onClickSearch() {
-        presenter.searchContacts(mInputSearch.getText().toString());
-    }
-
-    @Override
-    public void showContacts(List<Contact> contacts) {
-        adapter.setList(contacts);
-    }
-
-    @Override
-    public void showError(Throwable e) {
-        showSnackbar(mLayoutRoot, e.getMessage());
     }
 
     private void initToolbar() {
@@ -94,7 +93,7 @@ public class ContactActivity extends BaseActivity implements ContactContract.Vie
     }
 
     @Override
-    public void onClickContact(Contact contact) {
+    public void onClickContact(ContactViewData contact) {
         Toast.makeText(this, contact.toString(), Toast.LENGTH_SHORT).show();
     }
 }

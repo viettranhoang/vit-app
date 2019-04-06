@@ -3,8 +3,8 @@ package com.vit.presentation.features.contact;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.vit.domain.model.Contact;
-import com.vit.domain.usecase.contact_list.GetContactListUseCase;
+import com.vit.domain.usecase.contact.model.Contact;
+import com.vit.domain.usecase.contact.GetContactListUseCase;
 import com.vit.presentation.SingleLiveEvent;
 import com.vit.presentation.data.Resource;
 import com.vit.presentation.data.ResourceState;

@@ -1,6 +1,6 @@
-package com.vit.domain.repository;
+package com.vit.domain.usecase.contact.repository;
 
-import com.vit.domain.model.Contact;
+import com.vit.domain.usecase.contact.model.Contact;
 
 import java.util.List;
 

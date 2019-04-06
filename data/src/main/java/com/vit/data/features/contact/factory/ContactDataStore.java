@@ -1,4 +1,4 @@
-package com.vit.data.features.contact.source;
+package com.vit.data.features.contact.factory;
 
 import com.vit.data.features.contact.model.ContactEntity;
 
@@ -8,15 +8,13 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
-public interface ContactCache {
+public interface ContactDataStore {
 
-    Completable saveContact(List<ContactEntity> contacts);
+    Completable saveContacts(List<ContactEntity> contacts);
 
     Flowable<List<ContactEntity>> getContacts();
 
-    Single<Boolean> isCache();
+    Single<Boolean> isCached();
 
     boolean isExpired();
-
-    void setLastCacheTime(long lastCacheTime);
 }

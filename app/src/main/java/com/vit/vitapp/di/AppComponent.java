@@ -11,10 +11,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
-        AppModule.class,
-        NetworkModule.class,
-        RepositoryModule.class,
-        DatabaseModule.class})
+        AppModule.class})
 public interface AppComponent extends AndroidInjector<VitApplication> {
     @Component.Builder
     abstract class Builder extends AndroidInjector.Builder<VitApplication> {

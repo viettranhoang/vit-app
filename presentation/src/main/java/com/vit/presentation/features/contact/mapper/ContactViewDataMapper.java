@@ -1,6 +1,6 @@
 package com.vit.presentation.features.contact.mapper;
 
-import com.vit.domain.model.Contact;
+import com.vit.domain.usecase.contact.model.Contact;
 import com.vit.presentation.Mapper;
 import com.vit.presentation.features.contact.model.ContactViewData;
 

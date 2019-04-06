@@ -1,8 +1,8 @@
-package com.vit.domain.usecase.contact_list;
+package com.vit.domain.usecase.contact;
 
-import com.vit.domain.model.Contact;
-import com.vit.domain.repository.ContactRepository;
-import com.vit.domain.usecase.FlowableUseCase;
+import com.vit.domain.usecase.contact.model.Contact;
+import com.vit.domain.usecase.contact.repository.ContactRepository;
+import com.vit.domain.FlowableUseCase;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.vit.vitapp.ui.contact.listener;
 
-import com.vit.vitapp.data.model.Contact;
+import com.vit.presentation.features.contact.model.ContactViewData;
 
 public interface OnClickContactItemListener {
 
-    void onClickContact(Contact contact);
+    void onClickContact(ContactViewData contact);
 }
