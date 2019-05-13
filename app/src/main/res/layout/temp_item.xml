@@ -7,10 +7,15 @@
             name="item"
             type="com.vit.presentation.features.contact.model.ContactViewData" />
 
+        <variable
+            name="listener"
+            type="com.vit.vitapp.ui.contact.adapter.listener.OnClickContactItemListener" />
+
     </data>
 
     <RelativeLayout
         android:id="@+id/layout_root"
+        android:onClick="@{() -> listener.onClickContact(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"

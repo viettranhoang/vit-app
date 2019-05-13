@@ -5,7 +5,7 @@ import android.app.Activity;
 import com.vit.vitapp.di.scope.PerActivity;
 import com.vit.vitapp.ui.base.module.BaseActivityModule;
 import com.vit.vitapp.ui.contact.ContactActivity;
-import com.vit.vitapp.ui.contact.listener.OnClickContactItemListener;
+import com.vit.vitapp.ui.contact.adapter.listener.OnClickContactItemListener;
 
 import dagger.Binds;
 import dagger.Module;
