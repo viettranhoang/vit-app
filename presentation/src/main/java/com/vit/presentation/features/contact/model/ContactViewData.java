@@ -1,5 +1,10 @@
 package com.vit.presentation.features.contact.model;
 
+import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
+
+import javax.inject.Inject;
+
 public class ContactViewData {
     private String name;
 
@@ -47,4 +52,22 @@ public class ContactViewData {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public static class ContactDiffCallBack extends DiffUtil.ItemCallback<ContactViewData> {
+
+        @Inject
+        ContactDiffCallBack() {
+        }
+
+        @Override
+        public boolean areItemsTheSame(@NonNull ContactViewData oldItem, @NonNull ContactViewData newItem) {
+            return oldItem.phone.equals(newItem.phone);
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull ContactViewData oldItem, @NonNull ContactViewData newItem) {
+            return oldItem.email.equals(newItem.email);
+        }
+    }
+
 }

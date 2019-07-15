@@ -2,6 +2,7 @@ package com.vit.remote;
 
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -9,9 +10,19 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import static com.vit.remote.VitService.URL_SERVER;
 
 public class VitServiceFactory {
+
+    private Interceptor interceptor;
+
+    @Inject
+    public VitServiceFactory(@Named("MockInterceptor") Interceptor interceptor){
+        this.interceptor = interceptor;
+    }
 
     public VitService makeApiService() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL_SERVER)
@@ -34,7 +45,7 @@ public class VitServiceFactory {
 
                     return chain.proceed(request);
                 })
-                .addInterceptor(logging)
+                .addInterceptor(interceptor)
                 .build();
     }
 }

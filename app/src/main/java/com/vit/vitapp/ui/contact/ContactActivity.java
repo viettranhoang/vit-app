@@ -40,7 +40,7 @@ public class ContactActivity extends BaseActivity implements OnClickContactItemL
                 case LOADING:
                     break;
                 case SUCCESS:
-                    adapter.setList((List<ContactViewData>) resource.getData());
+                    adapter.submitList((List<ContactViewData>) resource.getData());
                     break;
                 case ERROR:
                     break;
